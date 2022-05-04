@@ -8,12 +8,19 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
+            InvokeRepeating("newVoid", 0f, 5f);
+        
         Instantiate(toSpawn,transform.position,transform.rotation);   
     }
 
     void newVoid()
     {
-       // Instantiate(toSpawn, transform.position, transform.rotation);
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(toSpawn, transform.position, transform.rotation);
+        }
+        
     }
     // Update is called once per frame
     void Update()
