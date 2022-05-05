@@ -112,12 +112,7 @@ public class Personagem2 : MonoBehaviour
 
     void Start()
     {
-     
-         origem = this.transform.position;
-      
-
-
-
+        origem = this.transform.position;
         inicio = Time.time;
         comprimento = Vector3.Distance(origem, destino);
         comprimento2 = Vector3.Distance(origem, waypoint2.position);
