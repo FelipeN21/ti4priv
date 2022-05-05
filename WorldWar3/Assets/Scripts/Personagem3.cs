@@ -88,7 +88,9 @@ public class Personagem3 : MonoBehaviour
                         transform.Rotate(0.0f, 0.0f, -90f);
                         break;
                 }
-           
+
+
+            if (i == 10 || i == 12) { Destroy(gameObject); }
             comprimento = Vector3.Distance(origem, destino);
             inicio = Time.time;
 
