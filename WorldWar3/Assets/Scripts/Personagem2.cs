@@ -35,11 +35,10 @@ public class Personagem2 : MonoBehaviour
         int[] printSolution(int[] dist, int n)
         {
             int[] ArrayCaminho1 = new int[50];
-            print("Vertex     Distance "
-                          + "from Source\n");
+           // print("Vertex     Distance "+ "from Source\n");
             for (int i = 0; i < V; i++)
             {
-                print(i + " \t\t " + dist[i] + "\n");
+               // print(i + " \t\t " + dist[i] + "\n");
                 ArrayCaminho1[i+1] = dist[i];
             
             
@@ -134,7 +133,7 @@ public class Personagem2 : MonoBehaviour
         int[] AC = Personagem2.GFG.M();
         int C1 = AC[0] + AC[1] + AC[2] + AC[3] + AC[4] + AC[5] + AC[6] + AC[7] + AC[8] + AC[9];
         int C2 = AC[0] + AC[1] + AC[2] + AC[3] + AC[10] + AC[11];
-        print("C1: " + C1 + " C2 :" + C2);
+       // print("C1: " + C1 + " C2 :" + C2);
 
         float tempo = Time.time - inicio;
          float velocidade = (tempo / comprimento) * 60; 
