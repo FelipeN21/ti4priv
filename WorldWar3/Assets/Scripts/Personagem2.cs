@@ -14,7 +14,7 @@ public class Personagem2 : MonoBehaviour
     public class GFG
     {
         
-        static int V = 13;
+        static int V = 12;
         int minDistance(int[] dist,
                         bool[] sptSet)
         {
@@ -38,7 +38,7 @@ public class Personagem2 : MonoBehaviour
            // print("Vertex     Distance "+ "from Source\n");
             for (int i = 0; i < V; i++)
             {
-               // print(i + " \t\t " + dist[i] + "\n");
+               print(i + " \t\t " + dist[i] + "\n");
                 ArrayCaminho1[i+1] = dist[i];
             
             
@@ -88,7 +88,7 @@ public class Personagem2 : MonoBehaviour
 
         public static int[] M()
         {
-                                              //A1 A2  A3  A4  A5  A6   A7  A8  A9 A10  A11 A12 A13
+            //A1 A2  A3  A4  A5  A6   A7  A8  A9 A10  A11 A12 A13
             int[,] graph = new int[,]{{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                                       {1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                                       {0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -100,8 +100,7 @@ public class Personagem2 : MonoBehaviour
                                       {0, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0},
                                       {0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1},
                                       {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 4, 0},
-                                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1},
-                                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0}}; 
+                                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1} };  
 
             GFG t = new GFG();
             int[] ArrayCaminho = t.dijkstra(graph, 0);
@@ -131,9 +130,14 @@ public class Personagem2 : MonoBehaviour
     void Update()
     {//transform.Rotate(_rotation * Time.deltaTime);
         int[] AC = Personagem2.GFG.M();
-        int C1 = AC[0] + AC[1] + AC[2] + AC[3] + AC[4] + AC[5] + AC[6] + AC[7] + AC[8] + AC[9];
-        int C2 = AC[0] + AC[1] + AC[2] + AC[3] + AC[10] + AC[11];
-       // print("C1: " + C1 + " C2 :" + C2);
+       //  int C1 = AC[0] + AC[1] + AC[2] + AC[3] + AC[4] + AC[5] + AC[6] + AC[7] + AC[8] + AC[9];
+       // int C2 = AC[0] + AC[1] + AC[2] + AC[3] + AC[10] + AC[11];
+
+        int C1 = AC[9] - AC[4];
+        int C2 = AC[11] - AC[4];
+
+
+        // print("C1: " + C1 + " C2 :" + C2);
 
         float tempo = Time.time - inicio;
          float velocidade = (tempo / comprimento) * 60; 

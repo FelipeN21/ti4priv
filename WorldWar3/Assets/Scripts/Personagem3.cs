@@ -11,6 +11,7 @@ public class Personagem3 : MonoBehaviour
     private Vector3 origem, destino;
     float inicio, comprimento, comprimento2;
     int i = 0;
+    int torre = 3;
     [SerializeField] private Vector3 _rotation;
 
 
@@ -19,7 +20,7 @@ public class Personagem3 : MonoBehaviour
     public class GFG
     {
 
-        static int V = 13;
+        static int V = 12;
         int minDistance(int[] dist,
                         bool[] sptSet)
         {
@@ -105,8 +106,8 @@ public class Personagem3 : MonoBehaviour
                                       {0, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0},
                                       {0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1},
                                       {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 4, 0},
-                                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1},
-                                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0}};
+                                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1} };
+                                      
 
             GFG t = new GFG();
             int[] ArrayCaminho = t.dijkstra(graph, 0);
@@ -139,10 +140,13 @@ public class Personagem3 : MonoBehaviour
     {//transform.Rotate(_rotation * Time.deltaTime);
 
         int[] AC = Personagem2.GFG.M();
-        int C1 = AC[0] + AC[1] + AC[2] + AC[3] + AC[4] + AC[5] + AC[6] + AC[7] + AC[8] + AC[9];
-        int C2 = AC[0] + AC[1] + AC[2] + AC[3] + AC[10] + AC[11];
-        float primeiroCaminho = resultado(C1);
-        float segundoCaminho = resultado(C2);
+        //    int C2 = AC[0] + AC[1] + AC[2] + AC[3] + AC[4] + AC[5] + AC[6] + AC[7] + AC[8] + AC[9];
+        // int C1 = AC[0] + AC[1] + AC[2] + AC[3] + AC[10] + AC[11];
+
+        int C1 = AC[9] - AC[4];
+        int C2 = AC[11] - AC[4];
+        float primeiroCaminho = resultado(C2,torre);
+        float segundoCaminho = resultado(C1, 0);
         float tempo = Time.time - inicio;
        float velocidade = (tempo / comprimento) * 60;
        this.transform.position = Vector3.Lerp(origem, destino, velocidade);
@@ -245,13 +249,14 @@ public class Personagem3 : MonoBehaviour
 
 
 
-    float resultado(int c)
+    float resultado(int c, int torre)
     {
         float rangeTor = 32f;
         float turnSpeed = 10f;
         float fireRate = 5f;
         float fireCoutdown = 2f;
-        return c * ((rangeTor / turnSpeed) * (fireRate / fireCoutdown)); 
+        //int resultado = torre*((rangeTor / turnSpeed) * (fireRate / fireCoutdown));
+        return c *( torre * ((rangeTor / turnSpeed) * (fireRate / fireCoutdown))); 
      }
 
 
