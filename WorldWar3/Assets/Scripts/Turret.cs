@@ -17,7 +17,7 @@ public class Turret : MonoBehaviour
     [Header("Use Bullets (default)")]
     public GameObject bulletPrefab;
     public float fireRate = 5f;
-    private float fireCountdown = 2f;
+    private float fireCountdown = 1f;
     public Transform firePoint;
 
 
