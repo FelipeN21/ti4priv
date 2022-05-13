@@ -9,6 +9,8 @@ public class Personagem2 : MonoBehaviour
     private Vector3 origem, destino;
     float inicio, comprimento, comprimento2;
     int i = 0;
+    	public float startHealth = 100;
+	private float health;
     [SerializeField] private Vector3 _rotation;
     // Start is called before the first frame update
     public class GFG
@@ -108,8 +110,52 @@ public class Personagem2 : MonoBehaviour
         }
     }
 
+
+   public void TakeDamage(float amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+            Destroy(gameObject);
+
+    }
+
+/*
+public class EntitieLife
+{
+
+    public EntitieLife(){
+        int vida = 250;
+    }
+public bool Morte(int vidaAtual)
+{
+    if(vidaAtual <= 0){
+    Destroy(gameObject);
+    return true;
+    }
+return false;
+
+}
+public int Danificar(int Dano)
+{
+    bool morte;
+ this.vida = this.vida - Dano;
+    morte = Morte(this.vida);
+
+    if(!morte)
+return this.vida;
+else return 0;
+}
+
+
+
+}
+
+*/
     void Start()
     {
+       //Personagem2.EntitieLife Carro = new Personagem2.EntitieLife();
+       health = startHealth;
         origem = this.transform.position;
         inicio = Time.time;
         comprimento = Vector3.Distance(origem, destino);
@@ -117,12 +163,13 @@ public class Personagem2 : MonoBehaviour
 
         if (waypoint1.GetComponent<Aresta>().peso * comprimento < waypoint2.GetComponent<Aresta>().peso * comprimento)
         {
-            destino = waypoint1.position;
-
+           destino = waypoint1.position;
+           
         }
         else
         {
             destino = waypoint2.position;
+            
         }
     }
 
@@ -141,12 +188,13 @@ public class Personagem2 : MonoBehaviour
 
         float tempo = Time.time - inicio;
          float velocidade = (tempo / comprimento) * 60; 
-        
-        this.transform.position = Vector3.Lerp(origem, destino, velocidade);
+                 
+        this.transform.position = Vector3.Lerp(origem, destino, velocidade/1.4f);
         if(Vector3.Distance(this.transform.position, destino) == 0)
         {
             i++;
             origem = destino;
+            
             if (C1 < C2) { 
             switch (i)
             {
