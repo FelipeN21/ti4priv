@@ -1036,9 +1036,9 @@ MonoBehaviour:
   target: {fileID: 0}
   range: 32
   enemyTag: Enemy
-  turnSpeed: 10
-  bulletPrefab: {fileID: 7946584723032202231, guid: 921da5117d078234f81624fb3489909b, type: 3}
-  fireRate: 99
+  turnSpeed: 50
+  bulletPrefab: {fileID: 8347702137138551424, guid: f81548f1d34ca8f4d94dc9e3cb0f0c0f, type: 3}
+  fireRate: 50
   firePoint: {fileID: 487935567}
   partToRotate: {fileID: 241431437}
 --- !u!4 &241431437 stripped
@@ -4627,9 +4627,9 @@ MonoBehaviour:
   target: {fileID: 0}
   range: 32
   enemyTag: Enemy
-  turnSpeed: 10
-  bulletPrefab: {fileID: 3828936757657812020, guid: 03aa67900a362ed4a902737e6ba168c8, type: 3}
-  fireRate: 5
+  turnSpeed: 35
+  bulletPrefab: {fileID: 4447018680892408737, guid: 02929ed3cfea60e42bfc0dc09b324d78, type: 3}
+  fireRate: 1
   firePoint: {fileID: 1997654446}
   partToRotate: {fileID: 1165716306}
 --- !u!4 &1165716306 stripped
