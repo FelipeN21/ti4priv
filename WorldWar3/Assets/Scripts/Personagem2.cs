@@ -40,7 +40,7 @@ public class Personagem2 : MonoBehaviour
            // print("Vertex     Distance "+ "from Source\n");
             for (int i = 0; i < V; i++)
             {
-               print(i + " \t\t " + dist[i] + "\n");
+               //print(i + " \t\t " + dist[i] + "\n");
                 ArrayCaminho1[i+1] = dist[i];
             
             
