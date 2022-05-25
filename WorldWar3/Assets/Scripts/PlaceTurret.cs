@@ -6,8 +6,7 @@ public class PlaceTurret : MonoBehaviour
 {
     public GameObject[] turretPrefabs;
     public Transform[] foundations;
-    public enum Turret {C75, KATYUSHA, SHILKA, T64};
-    public Turret turret;
+    public static TurretManager.Turret turret = 0;
     public int foundationNum;
     public void InstanceTurret() {
         Vector3 pos = foundations[foundationNum].position - new Vector3(0f,0.5f,0f);
