@@ -1,23 +1,8 @@
 fileFormatVersion: 2
-guid: f12f5951f61d73448bd92e23a7d05779
+guid: 85ebd7b5be9bdf14cb3e60376880454b
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 7332267369017053418
-    second: Tigr|WheelSpinning
-  - first:
-      74: -2199591878581401518
-    second: Wheel1|WheelSpinning
-  - first:
-      74: -496649497418777226
-    second: Wheels2|WheelSpinning
-  - first:
-      74: 5112238710384133812
-    second: Wheels3|WheelSpinning
-  - first:
-      74: 2189596115149330183
-    second: Wheels4|WheelSpinning
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2

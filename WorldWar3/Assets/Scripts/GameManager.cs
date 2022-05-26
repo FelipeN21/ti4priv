@@ -8,15 +8,11 @@ public class GameManager : MonoBehaviour
     public static int playerHP = 100;
     public static int playerScore = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public static void reducePoints(){
+        playerHP = playerHP - 1;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public static void addScore(int amount){
+        playerScore = playerScore + amount;
     }
 }

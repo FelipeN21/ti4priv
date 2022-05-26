@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
-{ int i = 0;
-    public GameObject toSpawn;
+{ 
+    int i = 0;
+    public GameObject enemyPrefab;
+    public GameObject spawnerWaypoint;
+    public UIManager UIMg;
+    public float frequency = 5f;
     // Start is called before the first frame update
     void Start()
     {
        
-            InvokeRepeating("newVoid", 0f, 5f);
+            InvokeRepeating("spawn", 5f, frequency);
         
-        Instantiate(toSpawn,transform.position,transform.rotation);   
+        //Instantiate(toSpawn,transform.position,transform.rotation);   
     }
 
-    void newVoid()
+    void spawn()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            Instantiate(toSpawn, transform.position, transform.rotation);
+        GameObject enemyInstance = Instantiate(enemyPrefab, transform.position, transform.rotation);
+        Enemy enemy = enemyInstance.GetComponent<Enemy>();
+
+        if (enemy != null){
+            enemy.waypointParent = spawnerWaypoint;
+            enemy.UIMg = UIMg;
         }
         
     }
