@@ -9,13 +9,48 @@ public class Spawner : MonoBehaviour
     public GameObject spawnerWaypoint;
     public UIManager UIMg;
     public float frequency = 5f;
-    // Start is called before the first frame update
+    public enum SPAWN_RATE_ENUM {SLOW = 0, NORMAL = 1, FAST = 2, SUPERFAST = 3};
+    public static float spawnRate = 1f;
+    
     void Start()
     {
-       
-            InvokeRepeating("spawn", 5f, frequency);
+        StartCoroutine(spawnRoutine());  
+    }
+    
+    void Update()
+    {
+    }
+
+    IEnumerator spawnRoutine()
+    {
+        while (true)
+        {
+        spawn();
         
-        //Instantiate(toSpawn,transform.position,transform.rotation);   
+        yield return new WaitForSeconds(frequency/spawnRate);            
+        }
+    }
+
+    public static void setSpawnerRate(SPAWN_RATE_ENUM phase)
+    {
+        switch (phase)
+        {
+            case SPAWN_RATE_ENUM.SLOW:            
+                spawnRate = 0.3f;
+            break;
+            case SPAWN_RATE_ENUM.NORMAL:            
+                spawnRate = 1.0f;
+            break;
+            case SPAWN_RATE_ENUM.FAST:            
+                spawnRate = 1.5f;
+            break;
+            case SPAWN_RATE_ENUM.SUPERFAST:            
+                spawnRate = 2.0f;
+            break;
+            default:            
+                spawnRate = 1.0f;
+            break;
+        }
     }
 
     void spawn()
@@ -28,11 +63,5 @@ public class Spawner : MonoBehaviour
             enemy.UIMg = UIMg;
         }
         
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
-       // Invoke("newVoid", 3);
     }
 }

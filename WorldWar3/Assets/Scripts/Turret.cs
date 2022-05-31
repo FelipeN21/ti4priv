@@ -12,6 +12,7 @@ public class Turret : MonoBehaviour
     public float range = 32f;
     public string enemyTag = "Enemy";
     public float turnSpeed = 10f;
+    public int damage;
 
 
     [Header("Use Bullets (default)")]
@@ -19,7 +20,6 @@ public class Turret : MonoBehaviour
     public float fireRate = 5f;
     private float fireCountdown = 1f;
     public Transform firePoint;
-    public int damage;
 
 
 

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class TurretManager : MonoBehaviour
 {
+
+    public UIManager UIMg;
     public static bool[] placed;
+    Dictionary<int, GameObject> placedTurrets = new Dictionary<int, GameObject>();
     public GameObject[] turretPrefabs;
     public GameObject foundationsParents;
     public static Transform[] foundations;
@@ -28,19 +31,53 @@ public class TurretManager : MonoBehaviour
     public void setTurret(int t){
         switch (t)
         {
-            case 0:            
-            turret = Turret.C75;
+            case 0:
+                turret = Turret.C75;
             break;
-            case 1:            
-            turret = Turret.KATYUSHA;
+            case 1:
+                turret = Turret.KATYUSHA;
             break;
-            case 2:            
-            turret = Turret.SHILKA;
+            case 2:
+                turret = Turret.SHILKA;
             break;
-            case 3:            
-            turret = Turret.T64;
+            case 3:
+                turret = Turret.T64;
             break;
         }
+    }
+
+    public int returnCost(Turret t){
+        switch (t)
+        {
+            case Turret.C75:
+                return 100;
+            case Turret.KATYUSHA:
+                return 500;
+            case Turret.SHILKA:
+                return 40;
+            case Turret.T64:
+                return 200;
+        }
+        return 99999;
+    }
+
+    public void tryPlacingTurret(int num){
+        if (GameManager.playerCurrency - returnCost(turret) > 0)
+        {
+            GameManager.playerCurrency -= returnCost(turret);
+            UIMg.updateStats();
+            InstanceTurret(num);
+        }
+        else
+        {            
+            StartCoroutine(UIManager.noCurrency());
+        }
+    }
+    public void deleteTurret(int num) {
+        GameObject removedTurret = placedTurrets[num];
+        placedTurrets.Remove(num);
+        placed[num] = false;
+        Object.Destroy(removedTurret);
     }
 
     public void InstanceTurret(int num) {
@@ -48,6 +85,7 @@ public class TurretManager : MonoBehaviour
         Vector3 pos = foundations[num].position + new Vector3(0f,1f,0f);
         Quaternion rot = Quaternion.Euler(new Vector3(0f,-90f,0f));
         GameObject turretMap = (GameObject)Instantiate(turretPrefabs[(int)turret], pos, rot);
+        placedTurrets.Add(num, turretMap);
     }
 
 }

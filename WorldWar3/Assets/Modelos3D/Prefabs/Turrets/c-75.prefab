@@ -500,8 +500,9 @@ MonoBehaviour:
   range: 100
   enemyTag: Enemy
   turnSpeed: 35
+  damage: 50
+  price: 80
   bulletPrefab: {fileID: 4447018680892408737, guid: 02929ed3cfea60e42bfc0dc09b324d78, type: 3}
   fireRate: 1
   firePoint: {fileID: 8589260935639434622}
-  damage: 50
   partToRotate: {fileID: 8122688524315035201}
