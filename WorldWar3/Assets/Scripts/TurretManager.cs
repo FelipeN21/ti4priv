@@ -62,7 +62,7 @@ public class TurretManager : MonoBehaviour
     }
 
     public void tryPlacingTurret(int num){
-        if (GameManager.playerCurrency - returnCost(turret) > 0)
+        if (GameManager.playerCurrency - returnCost(turret) >= 0)
         {
             GameManager.playerCurrency -= returnCost(turret);
             UIMg.updateStats();
