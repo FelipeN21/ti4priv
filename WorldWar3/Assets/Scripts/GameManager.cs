@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         playerHP = 100;
         playerScore = 0;
         timer = 180f;
+        globalClock = 0;
         pauseGame(true);          
     }
     
