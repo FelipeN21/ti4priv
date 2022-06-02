@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 { 
-    int i = 0;
     public GameObject enemyPrefab;
-    public GameObject spawnerWaypoint;
+    public static GameObject spawnerWaypoint;
+    public GameObject shortPath;
+    public GameObject longPath;
     public UIManager UIMg;
     public float frequency = 5f;
     public enum SPAWN_RATE_ENUM {SLOW = 0, NORMAL = 1, FAST = 2, SUPERFAST = 3};
@@ -14,6 +15,7 @@ public class Spawner : MonoBehaviour
     
     void Start()
     {
+        spawnerWaypoint = shortPath;
         StartCoroutine(spawnRoutine());  
     }
     
@@ -28,6 +30,18 @@ public class Spawner : MonoBehaviour
         spawn();
         
         yield return new WaitForSeconds(frequency/spawnRate);            
+        }
+    }
+
+    public void setPath(bool shouldBeShortPath)
+    {
+        if (shouldBeShortPath)
+        {
+            spawnerWaypoint = shortPath;
+        }
+        else
+        {
+            spawnerWaypoint = longPath;
         }
     }
 

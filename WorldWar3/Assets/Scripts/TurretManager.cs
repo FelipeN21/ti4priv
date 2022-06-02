@@ -7,7 +7,7 @@ public class TurretManager : MonoBehaviour
 
     public UIManager UIMg;
     public static bool[] placed;
-    Dictionary<int, GameObject> placedTurrets = new Dictionary<int, GameObject>();
+    public static Dictionary<int, GameObject> placedTurrets;
     public GameObject[] turretPrefabs;
     public GameObject foundationsParents;
     public static Transform[] foundations;
@@ -15,6 +15,7 @@ public class TurretManager : MonoBehaviour
     public enum Turret {C75 = 0, KATYUSHA = 1, SHILKA = 2, T64 = 3};
 
     private void Start() {
+        placedTurrets = new Dictionary<int, GameObject>();
         placed = new bool[20];
         for (int i = 0; i < placed.Length; i++){
             placed[i] = false;
@@ -67,6 +68,9 @@ public class TurretManager : MonoBehaviour
             GameManager.playerCurrency -= returnCost(turret);
             UIMg.updateStats();
             InstanceTurret(num);
+            AIManager.placeTower(num, true);
+            AIManager.printMatrix();
+            AIManager.printDjikstra();
         }
         else
         {            
@@ -77,6 +81,7 @@ public class TurretManager : MonoBehaviour
         GameObject removedTurret = placedTurrets[num];
         placedTurrets.Remove(num);
         placed[num] = false;
+        AIManager.placeTower(num, false);
         Object.Destroy(removedTurret);
     }
 

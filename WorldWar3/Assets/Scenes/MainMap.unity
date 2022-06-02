@@ -388,6 +388,7 @@ GameObject:
   - component: {fileID: 57789745}
   - component: {fileID: 57789746}
   - component: {fileID: 57789747}
+  - component: {fileID: 57789748}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -442,6 +443,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIMg: {fileID: 529281699}
+--- !u!114 &57789748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57789744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18efd8db31da964b87ce419ddd40df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  edges:
+  - node1: {fileID: 1026708049}
+    node2: {fileID: 1408440864}
+  - node1: {fileID: 1408440864}
+    node2: {fileID: 2004937776}
+  - node1: {fileID: 2004937776}
+    node2: {fileID: 121014600}
+  - node1: {fileID: 121014600}
+    node2: {fileID: 676368785}
+  - node1: {fileID: 676368785}
+    node2: {fileID: 1151931692}
+  - node1: {fileID: 121014600}
+    node2: {fileID: 868655535}
+  - node1: {fileID: 868655535}
+    node2: {fileID: 744233904}
+  - node1: {fileID: 744233904}
+    node2: {fileID: 1954217569}
+  - node1: {fileID: 1954217569}
+    node2: {fileID: 1578220496}
+  - node1: {fileID: 1578220496}
+    node2: {fileID: 836893565}
+  - node1: {fileID: 836893565}
+    node2: {fileID: 895932866}
+  - node1: {fileID: 895932866}
+    node2: {fileID: 676368785}
+  - node1: {fileID: 676368785}
+    node2: {fileID: 1151931692}
+  verticesParent: {fileID: 449893878}
+  spawnersParent: {fileID: 1990629378}
 --- !u!4 &64709327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b45e51f4c8cb29845a149723e0e1c2cb, type: 3}
@@ -693,7 +735,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3158564657824410310, guid: fdbb0128d4a38f54cbfb8d7e15f9e086, type: 3}
-  spawnerWaypoint: {fileID: 164102854}
+  shortPath: {fileID: 164102854}
+  longPath: {fileID: 673097417}
   UIMg: {fileID: 529281699}
   frequency: 5
 --- !u!1 &114525898
@@ -4608,7 +4651,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 54184228034837385, guid: 26c3f81f8f94ab441b69458f1ce2fb24, type: 3}
-  spawnerWaypoint: {fileID: 673097417}
+  shortPath: {fileID: 164102854}
+  longPath: {fileID: 673097417}
   UIMg: {fileID: 529281699}
   frequency: 15
 --- !u!4 &473721178
@@ -12319,7 +12363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4993392384845783185, guid: 86d226538a129a5469be8f56ada148dc, type: 3}
-  spawnerWaypoint: {fileID: 673097417}
+  shortPath: {fileID: 164102854}
+  longPath: {fileID: 673097417}
   UIMg: {fileID: 529281699}
   frequency: 10
 --- !u!1 &1408440864
@@ -13998,7 +14043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1639512583
 Transform:
   m_ObjectHideFlags: 0
@@ -14669,7 +14714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6524180802324463855, guid: b91c60eb509f3b44b8f9feb2a156f57b, type: 3}
-  spawnerWaypoint: {fileID: 164102854}
+  shortPath: {fileID: 164102854}
+  longPath: {fileID: 673097417}
   UIMg: {fileID: 529281699}
   frequency: 2
 --- !u!1001 &1786958947
@@ -16211,7 +16257,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 20
+          m_FloatArgument: 2
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
