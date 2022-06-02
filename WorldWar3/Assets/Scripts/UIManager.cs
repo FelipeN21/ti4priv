@@ -88,7 +88,7 @@ public class UIManager : MonoBehaviour
         GameObject timerText = GameManager.getChildWithName(rightPanelText, "Timer");
 
         if (GameManager.playerHP > 0 && GameManager.timer > 0) {
-            timerText.GetComponent<TextMeshProUGUI>().text =    "Time: " + string.Format("{0. 0:f2}", GameManager.timer);
+            timerText.GetComponent<TextMeshProUGUI>().text =    "Time: " + string.Format("{0, 0:f2}", GameManager.timer);
         }
     }
 
