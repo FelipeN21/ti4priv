@@ -7,6 +7,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public GameObject buttonsParent;
+    public GameObject AIChosen;
     public GameObject removeButtonsParent;
     public GameObject rightPanelText;
     public GameObject WinLossUI;
@@ -41,7 +42,16 @@ public class UIManager : MonoBehaviour
         displayTurretPlacements(false);
         displayTurretRemove(false);
     }
-
+    public void showAI(bool djikstra){
+        if (djikstra)
+        {
+            AIChosen.GetComponent<TextMeshProUGUI>().text = "IA: " + "Djikstra";
+        }
+        else
+        {
+            AIChosen.GetComponent<TextMeshProUGUI>().text = "IA: " + "A*";
+        }
+    }
 
     public void displayTurretPlacements(bool choice){
         int index = 0;

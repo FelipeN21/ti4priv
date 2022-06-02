@@ -11,20 +11,29 @@ public struct Link
 
 public class AIManager : MonoBehaviour
 {
+    public static bool DjikstraON = true;
     public static int [,] pathMatrix;
     public Link [] edges;
     public GameObject verticesParent;
     GameObject [] vertices;
     public GameObject spawnersParent;
     public static Spawner[] spanwers;
+    public UIManager UIMgassign;
+    public static UIManager UIMg;
 
     private void Start() {
+        setUIManager();
         setSpawners();
         setVertices();
         initializePathMatrix();
         setPathMatrix();
         printMatrix();
         printDjikstra();
+    }
+
+    void setUIManager()
+    {
+        UIMg = UIMgassign;
     }
 
     void setSpawners()
@@ -173,7 +182,6 @@ public class AIManager : MonoBehaviour
                     adjustWeight(8, 9, weight);
                     adjustWeight(9, 8, weight);
                 }
-
             }
         }
     }
@@ -190,9 +198,43 @@ public class AIManager : MonoBehaviour
 
         int [] menoresCaminhos = Djikstra.GFG.M(pathMatrix);
         bool shouldBeShortPath = false;
-        if (menoresCaminhos[9] > menoresCaminhos[11])
+
+        if (DjikstraON)
         {
-            shouldBeShortPath = true;
+            if (menoresCaminhos[9] > menoresCaminhos[11])
+            {
+                shouldBeShortPath = true;
+            }
+        }
+        else
+        {
+            //shouldBeShortPath = funcaoficticaA(menoresCaminhos);
+        }
+
+        foreach (Spawner spawner in spanwers){
+            spawner.setPath(shouldBeShortPath);
+        }
+    }
+
+    public static void changeAIs()
+    {
+        DjikstraON = !DjikstraON;
+        
+        int [] menoresCaminhos = Djikstra.GFG.M(pathMatrix);
+        bool shouldBeShortPath = false;
+
+        if (DjikstraON)
+        {
+            if (menoresCaminhos[9] > menoresCaminhos[11])
+            {
+                shouldBeShortPath = true;
+            }
+            UIMg.showAI(true);
+        }
+        else
+        {
+            //shouldBeShortPath = funcaoficticaA(menoresCaminhos);
+            UIMg.showAI(false);
         }
 
         foreach (Spawner spawner in spanwers){
