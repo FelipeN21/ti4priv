@@ -7,12 +7,13 @@ public class TurretManager : MonoBehaviour
 
     public UIManager UIMg;
     public static bool[] placed;
-    Dictionary<int, GameObject> placedTurrets = new Dictionary<int, GameObject>();
+    public static Dictionary<int, GameObject> placedTurrets = new Dictionary<int, GameObject>();
     public GameObject[] turretPrefabs;
     public GameObject foundationsParents;
     public static Transform[] foundations;
     public static Turret turret = Turret.C75;
     public enum Turret {C75 = 0, KATYUSHA = 1, SHILKA = 2, T64 = 3};
+
 
     private void Start() {
         placed = new bool[20];
