@@ -88,6 +88,96 @@ public class AIManager : MonoBehaviour
         pathMatrix[vertices.Length-1,vertices.Length-1] = 1;
     }
 
+    private static void setPairedWeigth(int towerPos)
+    {
+        List<int> arrayCaminhoMenor = new List<int>() { 2, 13, 14, 15, 16, 9, 6 };
+        List<int> arrayCaminhoMaior = new List<int>() { 4, 5, 1, 0, 18, 17 };
+        int weight = 10;
+        foreach (KeyValuePair<int, GameObject> x in TurretManager.placedTurrets)
+        {
+            if (arrayCaminhoMenor.Contains(x.Key))
+            {
+                if (x.Key == 2)
+                {                    
+                    adjustWeight(2, 1, weight);
+                    adjustWeight(1, 2, weight);
+                }
+                else if (x.Key == 13)
+                {
+
+                    adjustWeight(3, 10, weight);
+                    adjustWeight(10, 3, weight);
+
+                }
+                else if (x.Key == 14)
+                {
+
+                    adjustWeight(3, 10, weight);
+                    adjustWeight(10, 3, weight);
+                }
+                else if (x.Key == 15)
+                {
+
+                    adjustWeight(3, 10, weight);
+                    adjustWeight(10, 3, weight);
+                }
+                else if (x.Key == 16)
+                {
+                    adjustWeight(10, 11, weight);
+                    adjustWeight(11, 10, weight);
+                }
+                else if (x.Key == 9)
+                {
+                    adjustWeight(3, 10, weight);
+                    adjustWeight(10, 3, weight);
+                }
+                else
+                {
+                    adjustWeight(3, 10, weight);
+                    adjustWeight(10, 3, weight);
+                }
+
+
+            }
+            else if (arrayCaminhoMaior.Contains(x.Key))
+            {
+
+                if (x.Key == 4)
+                {
+                    adjustWeight(3, 4, weight);
+                    adjustWeight(4, 3, weight);
+                }
+                else if (x.Key == 5)
+                {
+                    adjustWeight(4, 5, weight);
+                    adjustWeight(5, 4, weight);
+                }
+                else if (x.Key == 1)
+                {
+                    adjustWeight(5, 6, weight);
+                    adjustWeight(6, 5, weight);
+                }
+                else if (x.Key == 0)
+                {
+
+                    adjustWeight(6, 7, weight);
+                    adjustWeight(7, 6, weight);
+                }
+                else if (x.Key == 18)
+                {
+                    adjustWeight(7, 8, weight);
+                    adjustWeight(8, 7, weight);
+                }
+                else if (x.Key == 17)
+                {
+                    adjustWeight(8, 9, weight);
+                    adjustWeight(9, 8, weight);
+                }
+
+            }
+        }
+    }
+
     public static void placeTower(int towerPos, bool add)
     {        
         List<int> arrayCaminhoMenor = new List<int>() { 2, 13, 14, 15, 16, 9, 6 };
@@ -96,15 +186,7 @@ public class AIManager : MonoBehaviour
         int weight = 5;
         if (!add) { weight  = weight * -1; }
 
-
-        if (arrayCaminhoMaior.Contains(towerPos))
-        {
-            adjustWeight(3,4,weight);
-        }
-        else if(arrayCaminhoMenor.Contains(towerPos))
-        {            
-            adjustWeight(3,10,weight);
-        }
+        setPairedWeigth(towerPos);
 
         int [] menoresCaminhos = Djikstra.GFG.M(pathMatrix);
         bool shouldBeShortPath = false;
