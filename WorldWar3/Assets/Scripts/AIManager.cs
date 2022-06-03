@@ -12,6 +12,20 @@ public struct Link
 public class AIManager : MonoBehaviour
 {
 
+     public static int[,] Matrix = new int[,]{{0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0 },
+                                            { 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,0 },
+                                            {0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                                            { 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0},
+                                            { 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+                                            {0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                                            {0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0},
+                                            { 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
+                                            { 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0},
+                                            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+                                            {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
+                                            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                                            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, };
+
     
     public static bool DjikstraON = true;
     public static int[,] pathMatrix;
@@ -197,7 +211,7 @@ public class AIManager : MonoBehaviour
 
         setPairedWeigth(towerPos);
 
-        int[] menoresCaminhos = Djikstra.GFG.M(pathMatrix);
+        int[] menoresCaminhos = Djikstra.GFG.M(Matrix);
         bool shouldBeShortPath = false;
 
         if (DjikstraON)
@@ -222,7 +236,7 @@ public class AIManager : MonoBehaviour
     {
         DjikstraON = !DjikstraON;
 
-        int[] menoresCaminhos = Djikstra.GFG.M(pathMatrix);
+        int[] menoresCaminhos = Djikstra.GFG.M(Matrix);
         bool shouldBeShortPath = false;
 
         if (DjikstraON)
@@ -323,7 +337,7 @@ public class AIManager : MonoBehaviour
 
         float danorecebido = valorDano * (quantoTeempoFicanoRange / quantidadeTiroporS);
 
-        int weight = (int)(danorecebido - mediaVida);
+        int weight = (int)(danorecebido - mediaVida)*(-1);
         foreach (KeyValuePair<int, GameObject> x in TurretManager.placedTurrets)
         {
 
@@ -359,7 +373,7 @@ public class AIManager : MonoBehaviour
                 }
                 else
                 {
-                    menoresCaminhos[12] += weight;
+                    menoresCaminhos[11] += weight;
                 }
 
 
@@ -398,13 +412,18 @@ public class AIManager : MonoBehaviour
 
         }
 
-        int caminhoLongo = menoresCaminhos[4] + menoresCaminhos[5] + menoresCaminhos[6] + menoresCaminhos[7] + menoresCaminhos[8] + menoresCaminhos[9] + menoresCaminhos[10];
+        int caminhoLongo =  menoresCaminhos[5] + menoresCaminhos[6] + menoresCaminhos[7] + menoresCaminhos[8] + menoresCaminhos[9] + menoresCaminhos[10];
         int camiCurto = menoresCaminhos[4] + menoresCaminhos[11] ;
 
+        Debug.Log(caminhoLongo +" valor caminho longo");
+        Debug.Log(camiCurto+" valor caminho curto");
+        
         if (caminhoLongo < camiCurto)
         {
             return false;
         }
+
+        
 
         return true;
 
