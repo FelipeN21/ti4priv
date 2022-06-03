@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7946584723032202231, guid: 921da5117d078234f81624fb3489909b, type: 3}
       propertyPath: m_Name
-      value: Bullet Variant
+      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2933976809416002847, guid: 921da5117d078234f81624fb3489909b, type: 3}
@@ -76,4 +76,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 500
+  speed: 250
+  damage: 0
